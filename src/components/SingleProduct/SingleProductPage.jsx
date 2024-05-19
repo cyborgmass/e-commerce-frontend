@@ -7,6 +7,8 @@ import Loader from "../Common/Loader";
 import CartContext from "../../contexts/cartContext";
 import UserContext from "../../contexts/UserContext";
 
+import config from "../../config.json";
+
 const SingleProductPage = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -26,7 +28,7 @@ const SingleProductPage = () => {
               {product.images.map((image, index) => {
                 return (
                   <img
-                    src={`http://localhost:5000/products/${image}`}
+                    src={`${config.backendURL}/products/${image}`}
                     alt={product.title}
                     key={index}
                     className={selectedImage === index ? "selected_image" : ""}
@@ -36,7 +38,7 @@ const SingleProductPage = () => {
               })}
             </div>
             <img
-              src={`http://localhost:5000/products/${product.images[selectedImage]}`}
+              src={`${config.backendURL}/products/${product.images[selectedImage]}`}
               alt={product.title}
               className="single_product_display"
             />
